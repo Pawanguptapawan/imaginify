@@ -1,10 +1,11 @@
+import { UserButton } from "@clerk/nextjs";
 
 
 const Home = () => {
   return (
     <div>
-     <p>Home</p> 
-    
+     {/* <p>Home</p>  */}
+    {/* <UserButton /> */}
     </div>
   )
 }

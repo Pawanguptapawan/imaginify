@@ -7,10 +7,21 @@ import { connectToDatabase } from "../database/mongoose";
 import { handleError } from "../utils";
 
 // CREATE
+
+interface CreateUserParams {
+  clerkId: string;
+  email: string;
+  username: string;
+  firstName: string | null;
+  lastName: string | null;
+  photo: string;
+}
 export async function createUser(user: CreateUserParams) {
   try {
     await connectToDatabase();
+    console.log('Connected to database');
 
+    console.log('Creating new user:', user);
     const newUser = await User.create(user);
 
     return JSON.parse(JSON.stringify(newUser));
@@ -35,6 +46,13 @@ export async function getUserById(userId: string) {
 }
 
 // UPDATE
+
+interface UpdateUserParams {
+  firstName: string|null,
+      lastName: string|null,
+      username: string ,
+      photo: string,
+}
 export async function updateUser(clerkId: string, user: UpdateUserParams) {
   try {
     await connectToDatabase();
